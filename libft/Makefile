@@ -6,12 +6,12 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/31 18:58:43 by tpan              #+#    #+#              #
-#    Updated: 2017/05/27 13:05:31 by tpan             ###   ########.fr        #
+#    Updated: 2017/06/21 18:46:11 by bmerrill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libft.a
-SRC 	=	ft_strlen.c ft_strncpy.c ft_strcpy.c \
+SRC 	=	ft_strlen.c ft_strncpy.c ft_strcpy.c ft_strcspn.c \
 			ft_strcmp.c ft_putchar.c ft_putstr.c \
 			ft_atoi.c ft_atol.c ft_tolower.c ft_isalpha.c \
 			ft_toupper.c ft_isdigit.c ft_isalnum.c\

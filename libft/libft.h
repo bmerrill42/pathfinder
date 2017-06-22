@@ -6,7 +6,7 @@
 /*   By: tpan <tpan@student.42.us.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 18:16:47 by tpan              #+#    #+#             */
-/*   Updated: 2017/05/31 19:34:06 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/21 18:47:40 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_list
 
 typedef char		t_utf8;
 
+size_t				ft_strcspn(const char *s1, const char s2);
 int					get_next_line(const int fd, char **line);
 int					ft_strcmp(char *s1, char *s2);
 char				*ft_strcpy(char *dest, const char *src);
