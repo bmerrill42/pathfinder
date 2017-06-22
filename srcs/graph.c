@@ -1,3 +1,4 @@
+#include "../includes/lem_in.h"
 #define MAXV            1000     /* maximum number of vertices */
 
 typedef struct {
@@ -6,27 +7,36 @@ typedef struct {
 	struct edgenode *next;   /* next edge in list */
 } edgenode;
 
-typedef struct {
+typedef struct s_graph	{
 	edgenode *edges[MAXV+1]; /* adjacency info */
 	int degree[MAXV+1];      /* outdegree of each vertex */
 	int nvertices;           /* number of vertices in graph */
 	int nedges;              /* number of edges in graph */
-	bool directed; /* is the graph directed? */
-} graph;
+}				t_graph;
 
-initialize_graph(graph *g, bool directed)
+t_graph initialize_graph(t_graph *graph)
 {
 	int i;                          /* counter */
 
-	g -> nvertices = 0;
-	g -> nedges = 0;
-	g -> directed = directed;
+	i = 0;
+	graph -> nvertices = 0;
+	graph -> nedges = 0;
 
-	for (i=1; i<=MAXV; i++) g->degree[i] = 0;
-	for (i=1; i<=MAXV; i++) g->edges[i] = NULL;
+	while (i <= MAXV)
+	{
+		graph->degree[i] = 0;
+		i++;
+	}
+	i = 0;
+	while (i <= MAXV)
+	{
+		graph->edges[i] = NULL;
+		i++;
+	}
+	return (*graph);
 }
 
-read_graph(graph *g, bool directed)
+read_graph(t_graph *graph)
 {
 
 	int i;                         /* counter */
