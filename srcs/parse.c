@@ -23,7 +23,7 @@ int is_command(char *line)
 	int i;
 
 	i = 2;
-	while (line[0] == '#' && line[1] == '#'  && ft_isprint(line[i]))
+	while (line[0] == '#' && line[1] == '#'	 && ft_isprint(line[i]))
 		i++;
 	if (line[i] != '\0')
 		return (0);
@@ -52,10 +52,8 @@ int is_comment(char **line)
 
 void store_room(char **line, t_all *everything)
 {
-	/*
-	**do something fancy storing the node in the node array
-	*/
 	(void)everything;
+	ft_putendl("storing room V");
 	ft_putendl(*line);
 }
 
@@ -88,13 +86,14 @@ int is_room(char **line, t_all *everything)
 
 int set_start_room(t_all *everything)
 {
-
+	ft_putendl("start room is ^");
 	everything->start_index = everything->size;
 	return (1);
 }
 
 int set_end_room(t_all *everything)
 {
+	ft_putendl("end room is ^");
 	everything->end_index = everything->size;
 	return (1);
 }
@@ -122,8 +121,6 @@ int is_end(char **line, t_all *everything)
 	if (!is_room(line, everything))
 		return (0);
 	set_end_room(everything);
-	free(*line);
-	get_next_line(0, line);
 	return (1);
 }
 
@@ -135,6 +132,7 @@ int extra_command(char **line, t_all *everything)
 		return (0);
 	free(*line);
 	get_next_line(0, line);
+	ft_putendl("command acts on V");
 	if (!is_room(line, everything))
 		return (0);
 	return (1);
@@ -143,6 +141,7 @@ int extra_command(char **line, t_all *everything)
 int store_edge (char **line,  t_all *everything)
 {
 	(void)everything;
+	ft_putendl("storing edge V");
 	ft_putendl(*line);
 	return (1);
 }
@@ -152,15 +151,15 @@ int is_edge(char **line,  t_all *everything)
 	int i;
 
 	i = 0;
-	while (line[0][0] != '#' && ft_isprint(line[0][i]))
+	while (line[0][0] != '#' && ft_isprint(line[0][i]) && line[0][i] != '-')
 		i++;
 	if (line[0][i] != '-')
 		return (0);
-	while (line[0][0] != '#' && ft_isprint(line[0][i]))
+	i++;
+	while (line[0][0] != '#' && ft_isprint(line[0][i]) && line[0][i] != '-')
 		i++;
 	if (line[0][0] != '#' && line[0][i] != '\0')
 		return (0);
-	ft_putendl(*line);
 	store_edge(line, everything);
 	free(*line);
 	get_next_line(0, line);
@@ -202,16 +201,14 @@ int is_ant(char **line, t_all *everything)
 		;
 	while (ft_isdigit(line[0][i++]))
 		;
-	if (line[0][i] == '\0')
-	{
-		everything->num_of_ants = ft_atoi(*line);
-		ft_putendl(*line);
-		free(*line);
-		get_next_line(0, line);
-		return (1);
-	}
-	else
+	if (line[0][i] != '\0')
 		return(0);
+	everything->num_of_ants = ft_atoi(*line);
+	ft_putendl("this many ants V");
+	ft_putendl(*line);
+	free(*line);
+	get_next_line(0, line);
+	return (1);
 }
 
 int main()
@@ -220,9 +217,6 @@ int main()
 	t_all everything;
 
 	ft_bzero(&everything, sizeof(t_all));
-	/*
-	**parse the file with my best approximation of recursive descent
-	*/
 	while (get_next_line(0, &line))
 	{
 		if (line == '\0')
@@ -230,7 +224,11 @@ int main()
 		if (is_ant(&line, &everything))
 			if (is_roomlist(&line, &everything))
 				if (is_edge_list(&line, &everything))
+				{
+					free(line);
+					get_next_line(-42, &line);
 					return (1);
+				}
 				else
 					return (0);
 			else
