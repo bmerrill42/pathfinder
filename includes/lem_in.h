@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/21 17:36:25 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/22 19:47:18 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,24 @@ typedef enum		e_error
 	DUP_NAME,
 	MALLOC_FAIL
 }					t_error;
+
+typedef struct		s_lemin
+{
+	int	start;
+	int	end;
+	int	startend;
+	int	ant_count;
+	int	**ants;
+	int	r_ct;
+	int	**rooms;
+	int	t_ct;
+	int	**tubes;
+	int	finished;
+	int	print_colors;
+	int	print_moves;
+	int	moves;
+	int	print_ants;
+	int	print_rooms;
+}					t_lemin;
 
 #endif

@@ -1,4 +1,4 @@
-#include "../libft/libft.h"
+#include "../includes/lem_in.h"
 
 typedef struct s_node
 {
@@ -6,17 +6,6 @@ typedef struct s_node
 	int index;
 	int visited_p;
 } t_node;
-
-typedef struct s_all
-{
-	t_node *node_arr;
-	int start_index;
-	int end_index;
-	int size;
-	int num_of_ants;
-	int **connection_table;
-	int node_count;
-} t_all;
 
 int is_command(char *line)
 {
@@ -50,14 +39,14 @@ int is_comment(char **line)
 
 }
 
-void store_room(char **line, t_all *everything)
+void store_room(char **line, t_lemin *everything)
 {
 	(void)everything;
 	ft_putendl("storing room V");
 	ft_putendl(*line);
 }
 
-int is_room(char **line, t_all *everything)
+int is_room(char **line, t_lemin *everything)
 {
 	int i;
 
@@ -84,21 +73,21 @@ int is_room(char **line, t_all *everything)
 	return (1);
 }
 
-int set_start_room(t_all *everything)
+int set_start_room(t_lemin *everything)
 {
 	ft_putendl("start room is ^");
-	everything->start_index = everything->size;
+	everything->start = everything->size;
 	return (1);
 }
 
-int set_end_room(t_all *everything)
+int set_end_room(t_lemin *everything)
 {
 	ft_putendl("end room is ^");
-	everything->end_index = everything->size;
+	everything->end = everything->size;
 	return (1);
 }
 
-int is_start(char **line, t_all *everything)
+int is_start(char **line, t_lemin *everything)
 {
 	if (ft_strcmp(*line, "##start"))
 		return (0);
@@ -111,7 +100,7 @@ int is_start(char **line, t_all *everything)
 	return (1);
 }
 
-int is_end(char **line, t_all *everything)
+int is_end(char **line, t_lemin *everything)
 {
 	if (ft_strcmp(*line, "##end"))
 		return (0);
@@ -124,7 +113,7 @@ int is_end(char **line, t_all *everything)
 	return (1);
 }
 
-int extra_command(char **line, t_all *everything)
+int extra_command(char **line, t_lemin *everything)
 {
 	if (!ft_strcmp(*line, "##end") || !ft_strcmp(*line, "##start"))
 		return (0);
@@ -138,7 +127,7 @@ int extra_command(char **line, t_all *everything)
 	return (1);
 }
 
-int store_edge (char **line,  t_all *everything)
+int store_edge (char **line,  t_lemin *everything)
 {
 	(void)everything;
 	ft_putendl("storing edge V");
@@ -146,7 +135,7 @@ int store_edge (char **line,  t_all *everything)
 	return (1);
 }
 
-int is_edge(char **line,  t_all *everything)
+int is_edge(char **line,  t_lemin *everything)
 {
 	int i;
 
@@ -166,7 +155,7 @@ int is_edge(char **line,  t_all *everything)
 	return (1);
 }
 
-int is_edge_list (char **line, t_all *everything)
+int is_edge_list (char **line, t_lemin *everything)
 {
 	while (is_comment(line))
 		;
@@ -177,7 +166,7 @@ int is_edge_list (char **line, t_all *everything)
 	return (1);
 }
 
-int is_roomlist (char **line, t_all *everything)
+int is_roomlist (char **line, t_lemin *everything)
 {
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
@@ -192,7 +181,7 @@ int is_roomlist (char **line, t_all *everything)
 	return (1);
 }
 
-int is_ant(char **line, t_all *everything)
+int is_ant(char **line, t_lemin *everything)
 {
 	int i;
 
@@ -203,7 +192,7 @@ int is_ant(char **line, t_all *everything)
 		;
 	if (line[0][i] != '\0')
 		return(0);
-	everything->num_of_ants = ft_atoi(*line);
+	everything->ant_count = ft_atoi(*line);
 	ft_putendl("this many ants V");
 	ft_putendl(*line);
 	free(*line);
@@ -214,9 +203,9 @@ int is_ant(char **line, t_all *everything)
 int main()
 {
 	char *line;
-	t_all everything;
+	t_lemin everything;
 
-	ft_bzero(&everything, sizeof(t_all));
+	ft_bzero(&everything, sizeof(t_lemin));
 	while (get_next_line(0, &line))
 	{
 		if (line == '\0')
