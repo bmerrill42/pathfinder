@@ -14,7 +14,7 @@ typedef struct s_graph	{
 	int nedges;              /* number of edges in graph */
 }				t_graph;
 
-t_graph initialize_graph(t_graph *graph)
+void initialize_graph(t_graph *graph)
 {
 	int i;                          /* counter */
 
@@ -33,27 +33,10 @@ t_graph initialize_graph(t_graph *graph)
 		graph->edges[i] = NULL;
 		i++;
 	}
-	return (*graph);
+	return ;
 }
 
-read_graph(t_graph *graph)
-{
-
-	int i;                         /* counter */
-	int m;                         /* number of edges */
-	int x, y;                      /* vertices in edge (x,y) */
-
-	initialize_graph(g, directed);
-
-	scanf("%d %d",&(g->nvertices),&m);
-
-	for (i=1; i<=m; i++) {
-		scanf("%d %d",&x,&y);
-		insert_edge(g,x,y,directed);
-	}
-}
-
-insert_edge(graph *g, int x, int y, bool directed)
+void	insert_edge(t_graph *g, int x, int y)
 {
 	edgenode *p;                  /* temporary pointer */
 
@@ -66,10 +49,7 @@ insert_edge(graph *g, int x, int y, bool directed)
 	g->edges[x] = p;    /* insert at head of list */
 
 	g->degree[x] ++;
-
-	if (directed == FALSE)
-		insert_edge(g,y,x,TRUE);
-	else
+		insert_edge(g,y,x);
 		g->nedges ++;
 }
 
