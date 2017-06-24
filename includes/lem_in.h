@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/22 19:47:18 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/22 20:58:51 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define P3			"+#+#+#+#+#+   +#+        \n     #+#    #+#          \n" P4
 # define P4			"    ###   ########.us.org    \n"
 
-typedef enum		e_error
+enum		ERR
 {
 	GENERIC,
 	NO_ANTS,
@@ -39,7 +39,7 @@ typedef enum		e_error
 	NO_VALID_PATH,
 	DUP_NAME,
 	MALLOC_FAIL
-}					t_error;
+};
 
 typedef struct		s_lemin
 {
@@ -60,4 +60,5 @@ typedef struct		s_lemin
 	int	print_rooms;
 }					t_lemin;
 
+void		throw_error(int ERR);
 #endif

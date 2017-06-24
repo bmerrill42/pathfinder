@@ -1,4 +1,4 @@
-#include "includes/lem_in.h"
+#include "../includes/lem_in.h"
 
 void		throw_error(int ERR)
 {

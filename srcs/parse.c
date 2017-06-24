@@ -7,6 +7,32 @@ typedef struct s_node
 	int visited_p;
 } t_node;
 
+void store_room(char **line, t_lemin *everything)
+{
+	(void)everything;
+	ft_putendl(*line);
+}
+
+int store_edge (char **line,  t_lemin *everything)
+{
+	(void)everything;
+	ft_putendl(*line);
+	return (1);
+}
+
+int set_start_room(t_lemin *everything)
+{
+	everything->start = everything->r_ct;
+	return (1);
+}
+
+int set_end_room(t_lemin *everything)
+{
+	everything->end = everything->r_ct;
+	return (1);
+}
+
+
 int is_command(char *line)
 {
 	int i;
@@ -39,13 +65,6 @@ int is_comment(char **line)
 
 }
 
-void store_room(char **line, t_lemin *everything)
-{
-	(void)everything;
-	ft_putendl("storing room V");
-	ft_putendl(*line);
-}
-
 int is_room(char **line, t_lemin *everything)
 {
 	int i;
@@ -73,24 +92,12 @@ int is_room(char **line, t_lemin *everything)
 	return (1);
 }
 
-int set_start_room(t_lemin *everything)
-{
-	ft_putendl("start room is ^");
-	everything->start = everything->size;
-	return (1);
-}
-
-int set_end_room(t_lemin *everything)
-{
-	ft_putendl("end room is ^");
-	everything->end = everything->size;
-	return (1);
-}
-
 int is_start(char **line, t_lemin *everything)
 {
 	if (ft_strcmp(*line, "##start"))
 		return (0);
+	while (is_comment(line))
+		;
 	ft_putendl(*line);
 	free(*line);
 	get_next_line(0, line);
@@ -121,19 +128,11 @@ int extra_command(char **line, t_lemin *everything)
 		return (0);
 	free(*line);
 	get_next_line(0, line);
-	ft_putendl("command acts on V");
 	if (!is_room(line, everything))
 		return (0);
 	return (1);
 }
 
-int store_edge (char **line,  t_lemin *everything)
-{
-	(void)everything;
-	ft_putendl("storing edge V");
-	ft_putendl(*line);
-	return (1);
-}
 
 int is_edge(char **line,  t_lemin *everything)
 {
@@ -170,13 +169,33 @@ int is_roomlist (char **line, t_lemin *everything)
 {
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
-	if (!is_start(line, everything))
-		return (0);
+	if (!ft_strcmp("##start", *line))
+	{
+		if (!is_start(line, everything))
+			throw_error(NO_START);
+	}
+	else if (!ft_strcmp("##end", *line))
+	{
+		if (!is_end(line, everything))
+			throw_error(NO_END);
+	}
+	else
+		throw_error(NO_START);
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
-	if (!is_end(line, everything))
-		return (0);
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
+	if (!ft_strcmp("##start", *line))
+	{
+		if (!is_start(line, everything))
+			throw_error(NO_START);
+	}
+	else if (!ft_strcmp("##end", *line))
+	{
+		if (!is_end(line, everything))
+			throw_error(NO_END);
+	}
+	else
+		throw_error(NO_END);
+	return (0);	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
 	return (1);
 }
@@ -193,7 +212,6 @@ int is_ant(char **line, t_lemin *everything)
 	if (line[0][i] != '\0')
 		return(0);
 	everything->ant_count = ft_atoi(*line);
-	ft_putendl("this many ants V");
 	ft_putendl(*line);
 	free(*line);
 	get_next_line(0, line);
@@ -221,9 +239,9 @@ int main()
 				else
 					return (0);
 			else
-				return (0);
+				throw_error(NO_ROOMS);
 		else
-			return (0);
+			throw_error(NO_ANTS);
 	}
 	return (0);
 }
