@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/22 20:58:51 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/24 15:14:27 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ enum		ERR
 	NO_ROOMS,
 	NO_VALID_PATH,
 	DUP_NAME,
-	MALLOC_FAIL
+	MALLOC_FAIL,
+	BAD_ROOM_NAME
 };
 
 typedef struct		s_lemin

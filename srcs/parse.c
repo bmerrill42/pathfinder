@@ -13,23 +13,23 @@ void store_room(char **line, t_lemin *everything)
 	ft_putendl(*line);
 }
 
-int store_edge (char **line,  t_lemin *everything)
+void store_edge (char **line,  t_lemin *everything)
 {
 	(void)everything;
 	ft_putendl(*line);
-	return (1);
+	return ;
 }
 
-int set_start_room(t_lemin *everything)
+void set_start_room(t_lemin *everything)
 {
 	everything->start = everything->r_ct;
-	return (1);
+	return ;
 }
 
-int set_end_room(t_lemin *everything)
+void set_end_room(t_lemin *everything)
 {
 	everything->end = everything->r_ct;
-	return (1);
+	return ;
 }
 
 
@@ -74,13 +74,15 @@ int is_room(char **line, t_lemin *everything)
 		i++;
 	if (line[0][i] != ' ')
 		return (0);
-	else
+	i++;
+	if (line[0][i] == '-')
 		i++;
 	while (ft_isdigit(line[0][i]))
 		i++;
 	if (line[0][i] != ' ')
 		return (0);
-	else
+	i++;
+	if (line[0][i] == '-')
 		i++;
 	while (ft_isdigit(line[0][i]))
 		i++;
@@ -96,13 +98,11 @@ int is_start(char **line, t_lemin *everything)
 {
 	if (ft_strcmp(*line, "##start"))
 		return (0);
-	while (is_comment(line))
-		;
 	ft_putendl(*line);
 	free(*line);
 	get_next_line(0, line);
 	if (!is_room(line, everything))
-		return (0);
+		throw_error(BAD_ROOM_NAME);
 	set_start_room(everything);
 	return (1);
 }
@@ -115,7 +115,7 @@ int is_end(char **line, t_lemin *everything)
 	free(*line);
 	get_next_line(0, line);
 	if (!is_room(line, everything))
-		return (0);
+		throw_error(BAD_ROOM_NAME);
 	set_end_room(everything);
 	return (1);
 }
@@ -129,7 +129,7 @@ int extra_command(char **line, t_lemin *everything)
 	free(*line);
 	get_next_line(0, line);
 	if (!is_room(line, everything))
-		return (0);
+		throw_error(BAD_ROOM_NAME);
 	return (1);
 }
 
@@ -180,7 +180,7 @@ int is_roomlist (char **line, t_lemin *everything)
 			throw_error(NO_END);
 	}
 	else
-		throw_error(NO_START);
+		throw_error(GENERIC);
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
 	if (!ft_strcmp("##start", *line))
@@ -194,8 +194,8 @@ int is_roomlist (char **line, t_lemin *everything)
 			throw_error(NO_END);
 	}
 	else
-		throw_error(NO_END);
-	return (0);	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
+		throw_error(GENERIC);
+	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
 	return (1);
 }
@@ -228,20 +228,15 @@ int main()
 	{
 		if (line == '\0')
 			return (0);
-		if (is_ant(&line, &everything))
-			if (is_roomlist(&line, &everything))
-				if (is_edge_list(&line, &everything))
-				{
-					free(line);
-					get_next_line(-42, &line);
-					return (1);
-				}
-				else
-					return (0);
-			else
-				throw_error(NO_ROOMS);
-		else
+		if (!is_ant(&line, &everything))
 			throw_error(NO_ANTS);
+		if (!is_roomlist(&line, &everything))
+			throw_error(GENERIC);
+		if (!is_edge_list(&line, &everything))
+			throw_error(GENERIC);
+		return (1);
 	}
+	free(line);
+	get_next_line(-42, &line);
 	return (0);
 }
