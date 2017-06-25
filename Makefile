@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/03 19:55:55 by tpan              #+#    #+#              #
-#    Updated: 2017/06/19 12:00:56 by tpan             ###   ########.fr        #
+#    Updated: 2017/06/24 18:11:40 by bmerrill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = Lem_in
@@ -16,7 +16,7 @@ FT_PRINTF = ./ft_printf/ft_printf.a
 CFLAGS = -Wall -Werror -Wextra
 DEBUGFLAGS = -fsanitize=address -g
 LEAKCHECK = -g
-SRCFILES = 	parse.c \
+SRCFILES = 	parse.c error.c parse_main_functions.c parse_storage_functions.c\
 
 SRC = $(addprefix $(SRCDIR),$(SRCFILES))
 OBJ = $(addprefix $(OBJDIR),$(SRCFILES:.c=.o))
@@ -34,53 +34,53 @@ INCDIR = ./includes/
 all: $(LIBFT) $(FT_PRINTF) $(NAME)
 
 $(OBJ): $(SRC)
-	@$(CC) $(CFLAGS) -c -I$(INCDIR) $(SRC)
-	@mkdir -p $(OBJDIR)
-	@mv $(SRCFILES:.c=.o) $(OBJDIR)
+	$(CC) $(CFLAGS) -c -I$(INCDIR) $(SRC)
+	mkdir -p $(OBJDIR)
+	mv $(OBJ) $(OBJDIR)
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(INCDIR)*.h $(OBJ)
-	@echo "Compiling Lem_in"
-	@$(CC) $(CFLAGS) -c -I$(INCDIR) $(PSMAIN)
-	@mv $(PSMAINSRC:.c=.o) $(OBJDIR)
-	@$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBFTDIR) $(OBJ) $(LIBFT) $(PSOBJ) $(FT_PRINTF) -o $@
-	@echo "Lem_in: Compiled"
+	echo "Compiling Lem_in"
+	$(CC) $(CFLAGS) -c -I$(INCDIR) $(SRC)
+	mv *.o $(OBJDIR)
+	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBFTDIR) $(OBJ) $(LIBFT) $(FT_PRINTF) -o $@
+	echo "Lem_in: Compiled"
 
 $(LIBFT):
-	@make -C $(LIBFTDIR) all
+	make -C $(LIBFTDIR) all
 
 $(FT_PRINTF): $(LIBFT)
-	@make -C $(FTPFDIR) all
+	make -C $(FTPFDIR) all
 
 clean:
-	@echo "Cleaning push_swap"
-	@rm -rf $(OBJDIR)
-	@rm -rf push_swap_debug
-	@rm -rf push_swap_debug.dSYM
-	@rm -rf push_swap_leakcheck
-	@rm -rf push_swap_leakcheck.dSYM
-	@rm -rf checker_debug
-	@rm -rf checker_debug.dSYM
-	@rm -rf checker_leakcheck
-	@rm -rf checker_leakcheck.dSYM
-	@make -C $(LIBFTDIR) clean
-	@make -C $(FTPFDIR) clean
+	echo "Cleaning push_swap"
+	rm -rf $(OBJDIR)
+	rm -rf push_swap_debug
+	rm -rf push_swap_debug.dSYM
+	rm -rf push_swap_leakcheck
+	rm -rf push_swap_leakcheck.dSYM
+	rm -rf checker_debug
+	rm -rf checker_debug.dSYM
+	rm -rf checker_leakcheck
+	rm -rf checker_leakcheck.dSYM
+	make -C $(LIBFTDIR) clean
+	make -C $(FTPFDIR) clean
 
 fclean: clean
-	@echo "FCleaning push_swap"
-	@rm -rf $(NAME) checker
-	@make -C $(LIBFTDIR) fclean
-	@make -C $(FTPFDIR) fclean
+	echo "FCleaning push_swap"
+	rm -rf $(NAME) checker
+	make -C $(LIBFTDIR) fclean
+	make -C $(FTPFDIR) fclean
 
 re: fclean all
 
 debug: $(LIBFT) $(FT_PRINTF)
-	@echo "Compiling push_swap with debugging options"
-	@$(CC) $(CFLAGS) $(SRC) $(PSMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o push_swap_debug
-	@$(CC) $(CFLAGS) $(SRC) $(CMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o checker_debug
-	@echo "Compiled push_swap debug"
+	echo "Compiling push_swap with debugging options"
+	$(CC) $(CFLAGS) $(SRC) $(PSMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o push_swap_debug
+	$(CC) $(CFLAGS) $(SRC) $(CMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o checker_debug
+	echo "Compiled push_swap debug"
 
 leakcheck: $(LIBFT) $(FT_PRINTF)
-	@echo "Compiling for leak checks with valgrind"
-	@$(CC) $(CFLAGS) $(SRC) $(PSMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(LEAKCHECK) -o push_swap_leakcheck
-	@$(CC) $(CFLAGS) $(SRC) $(CMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(LEAKCHECK) -o checker_leakcheck
-	@echo "Compiled push_swap with leakchecker"
+	echo "Compiling for leak checks with valgrind"
+	$(CC) $(CFLAGS) $(SRC) $(PSMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(LEAKCHECK) -o push_swap_leakcheck
+	$(CC) $(CFLAGS) $(SRC) $(CMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(LEAKCHECK) -o checker_leakcheck
+	echo "Compiled push_swap with leakchecker"

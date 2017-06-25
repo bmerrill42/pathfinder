@@ -7,32 +7,6 @@ typedef struct s_node
 	int visited_p;
 } t_node;
 
-void store_room(char **line, t_lemin *everything)
-{
-	(void)everything;
-	ft_putendl(*line);
-}
-
-void store_edge (char **line,  t_lemin *everything)
-{
-	(void)everything;
-	ft_putendl(*line);
-	return ;
-}
-
-void set_start_room(t_lemin *everything)
-{
-	everything->start = everything->r_ct;
-	return ;
-}
-
-void set_end_room(t_lemin *everything)
-{
-	everything->end = everything->r_ct;
-	return ;
-}
-
-
 int is_command(char *line)
 {
 	int i;
@@ -70,7 +44,8 @@ int is_room(char **line, t_lemin *everything)
 	int i;
 
 	i = 0;
-	while (ft_isprint(line[0][i]) && line[0][i] != ' ' && line [0][0] != 'L')
+	while (ft_isprint(line[0][i]) && line[0][i] != ' ' && line [0][0] != 'L' &&
+		   line[0][i] != '-')
 		i++;
 	if (line[0][i] != ' ')
 		return (0);
@@ -133,7 +108,6 @@ int extra_command(char **line, t_lemin *everything)
 	return (1);
 }
 
-
 int is_edge(char **line,  t_lemin *everything)
 {
 	int i;
@@ -149,70 +123,6 @@ int is_edge(char **line,  t_lemin *everything)
 	if (line[0][0] != '#' && line[0][i] != '\0')
 		return (0);
 	store_edge(line, everything);
-	free(*line);
-	get_next_line(0, line);
-	return (1);
-}
-
-int is_edge_list (char **line, t_lemin *everything)
-{
-	while (is_comment(line))
-		;
-	if (!is_edge(line, everything))
-		return (0);
-	while (is_edge(line, everything) || is_comment(line))
-		;
-	return (1);
-}
-
-int is_roomlist (char **line, t_lemin *everything)
-{
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
-		;
-	if (!ft_strcmp("##start", *line))
-	{
-		if (!is_start(line, everything))
-			throw_error(NO_START);
-	}
-	else if (!ft_strcmp("##end", *line))
-	{
-		if (!is_end(line, everything))
-			throw_error(NO_END);
-	}
-	else
-		throw_error(GENERIC);
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
-		;
-	if (!ft_strcmp("##start", *line))
-	{
-		if (!is_start(line, everything))
-			throw_error(NO_START);
-	}
-	else if (!ft_strcmp("##end", *line))
-	{
-		if (!is_end(line, everything))
-			throw_error(NO_END);
-	}
-	else
-		throw_error(GENERIC);
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
-		;
-	return (1);
-}
-
-int is_ant(char **line, t_lemin *everything)
-{
-	int i;
-
-	i = 0;
-	while (is_comment(line))
-		;
-	while (ft_isdigit(line[0][i++]))
-		;
-	if (line[0][i] != '\0')
-		return(0);
-	everything->ant_count = ft_atoi(*line);
-	ft_putendl(*line);
 	free(*line);
 	get_next_line(0, line);
 	return (1);
