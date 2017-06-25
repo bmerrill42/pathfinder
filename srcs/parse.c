@@ -128,28 +128,27 @@ int is_edge(char **line,  t_lemin *everything)
 	return (1);
 }
 
-int main()
+int parse_input(t_lemin *everything)
 {
 	char *line;
-	t_lemin everything;
 	int i;
 
 	i = 0;
-	ft_bzero(&everything, sizeof(t_lemin));
+	ft_bzero(everything, sizeof(t_lemin));
 	while (get_next_line(0, &line))
 	{
 		if (line == '\0')
 			return (0);
-		if (!is_ant(&line, &everything))
+		if (!is_ant(&line, everything))
 			throw_error(NO_ANTS);
-		if (!is_roomlist(&line, &everything))
+		if (!is_roomlist(&line, everything))
 			throw_error(GENERIC);
-		if (!is_edge_list(&line, &everything))
+		if (!is_edge_list(&line, everything))
 			throw_error(GENERIC);
 		return (1);
 	}
-	while (i < everything.r_ct)
-		ft_putendl(everything.room_names[i++]);
+	while (i < everything->r_ct)
+		ft_putendl(everything->room_names[i++]);
 	free(line);
 	get_next_line(-42, &line);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/24 18:31:05 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/24 23:40:48 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,31 @@ enum		ERR
 	BAD_ROOM_NAME
 };
 
+typedef struct		s_path
+{
+	int		*pathfinder;
+	int		index;
+}					t_path;
+
+typedef struct		s_room
+{
+	bool	start;
+	bool	end;
+	char	*name;
+	bool	visited;
+	int		index;
+	int		*connections;
+	int		c_count;
+}					t_room;
+
 typedef struct		s_lemin
 {
-	char **room_names;
-	char **connections;
 	int	start;
 	int	end;
-	int	startend;
 	int	ant_count;
-	int	**ants;
 	int	r_ct;
-	int	**rooms;
-	int	t_ct;
-	int	**tubes;
-	int	finished;
-	int	print_colors;
-	int	print_moves;
-	int	moves;
-	int	print_ants;
-	int	print_rooms;
+	t_room	*rooms;
+	t_path	path;
 }					t_lemin;
 
 void	throw_error(int ERR);
