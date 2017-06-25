@@ -6,10 +6,10 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/03 19:55:55 by tpan              #+#    #+#              #
-#    Updated: 2017/06/24 18:11:40 by bmerrill         ###   ########.fr        #
+#    Updated: 2017/06/24 19:50:53 by bmerrill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = Lem_in
+NAME = lem_in
 CC = gcc
 LIBFT = ./libft/libft.a
 FT_PRINTF = ./ft_printf/ft_printf.a
@@ -36,13 +36,13 @@ all: $(LIBFT) $(FT_PRINTF) $(NAME)
 $(OBJ): $(SRC)
 	$(CC) $(CFLAGS) -c -I$(INCDIR) $(SRC)
 	mkdir -p $(OBJDIR)
-	mv $(OBJ) $(OBJDIR)
+	mv *.o $(OBJDIR)
 
 $(NAME): $(LIBFT) $(FT_PRINTF) $(INCDIR)*.h $(OBJ)
 	echo "Compiling Lem_in"
-	$(CC) $(CFLAGS) -c -I$(INCDIR) $(SRC)
+	$(CC) $(CFLAGS) -g -c -I$(INCDIR) $(SRC)
 	mv *.o $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCDIR) -I$(LIBFTDIR) $(OBJ) $(LIBFT) $(FT_PRINTF) -o $@
+	$(CC) $(CFLAGS) -g -I$(INCDIR) -I$(LIBFTDIR) $(OBJ) $(LIBFT) $(FT_PRINTF) -o $@
 	echo "Lem_in: Compiled"
 
 $(LIBFT):

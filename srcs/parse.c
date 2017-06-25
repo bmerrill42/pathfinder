@@ -132,7 +132,9 @@ int main()
 {
 	char *line;
 	t_lemin everything;
+	int i;
 
+	i = 0;
 	ft_bzero(&everything, sizeof(t_lemin));
 	while (get_next_line(0, &line))
 	{
@@ -146,6 +148,8 @@ int main()
 			throw_error(GENERIC);
 		return (1);
 	}
+	while (i < everything.r_ct)
+		ft_putendl(everything.room_names[i++]);
 	free(line);
 	get_next_line(-42, &line);
 	return (0);
