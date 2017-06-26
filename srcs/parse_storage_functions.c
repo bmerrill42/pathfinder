@@ -10,20 +10,20 @@ void new_str_array(char *str, t_room **rooms)
 	rooms[0]->connections = NULL;
 }
 
-void add_to_str_array(char *str, t_room **rooms)
+void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 {
 	t_room *tmp;
 	int i;
 
 	i = 0;
-	tmp = (t_room *)ft_memalloc(sizeof(*rooms) + sizeof(t_room));
-	while (i < (int)(sizeof(*rooms) / sizeof(t_room*)))
+	tmp = (t_room *)ft_memalloc(num_rooms * sizeof(t_room));
+	while (i < num_rooms)
 	{
 		tmp[i].name = ft_strdup((*rooms)[i].name);
-		tmp[i].start = FALSE;
-		tmp[i].end = FALSE;
-		tmp[i].visited = FALSE;
-		tmp[i].connections = NULL;
+		tmp[i].start = (*rooms)[i].start;
+		tmp[i].end = (*rooms)[i].end;
+		tmp[i].visited = (*rooms)[i].visited;
+		tmp[i].connections = (*rooms)[i].connections;
 		i++;
 	}
 	tmp[i].start = FALSE;
@@ -37,20 +37,20 @@ void add_to_str_array(char *str, t_room **rooms)
 
 void store_room(char **line, t_lemin *everything)
 {
-	if (!everything->rooms->name)
+	if (!(*everything).rooms)
 		new_str_array(*line, &everything->rooms);
 	else
-		add_to_str_array(*line, &everything->rooms);
+		add_to_str_array(*line, &everything->rooms, everything->r_ct);
 	everything->r_ct++;
 }
 
-void new_int_array(t_room *room, int neighbor)
+void new_connection_array(t_room *room, int neighbor)
 {
 	room->connections = (int*)malloc(sizeof(int));
 	room->connections[0] = neighbor;
 }
 
-void add_int_array(t_room *room, int neighbor)
+void add_connection_array(t_room *room, int neighbor)
 {
 	int *tmp;
 int i;
@@ -70,9 +70,9 @@ i = 0;
 void add_connection(t_lemin *everything, int room, int neighbor)
 {
 	if (!everything->rooms[room].connections)
-		new_int_array(&everything->rooms[room], neighbor);
+		new_connection_array(&everything->rooms[room], neighbor);
 	else
-		add_int_array(&everything->rooms[room], neighbor);
+		add_connection_array(&everything->rooms[room], neighbor);
 	everything->rooms[room].c_count++;
 }
 
@@ -85,11 +85,11 @@ int second_match;
 
 i = 0;
 	tmp = ft_strsplit(*line, '-');
-	while (!ft_strstr(everything->rooms[i].name, tmp[0]))
+	while (i < everything->r_ct && !ft_strstr(everything->rooms[i].name, tmp[0]))
 		i++;
 	first_match = i;
 	i = 0;
-	while (!ft_strstr(everything->rooms[i].name, tmp[1]))
+	while (i < everything->r_ct && !ft_strstr(everything->rooms[i].name, tmp[1]))
 		i++;
 	second_match = i;
 	add_connection(everything, first_match, second_match);
