@@ -1,6 +1,11 @@
 #include "../includes/lem_in.h"
 
-void display_ants(t_lemin *everything)
+void	print_ant_pos()
+{
+
+}
+
+void	display_ants(t_lemin *everything)
 {
   int ants = 1;
   int index = 1;
