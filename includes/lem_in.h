@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 01:40:28 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/25 20:22:00 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct		s_lemin
 	t_path	path;
 }					t_lemin;
 
+void	print_ants(t_lemin *everything);
 void	throw_error(int ERR);
 void	store_room(char **line, t_lemin *everything);
 void	store_edge (char **line,  t_lemin *everything);
