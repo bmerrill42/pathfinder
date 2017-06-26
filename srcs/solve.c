@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/24 20:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 03:43:20 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/25 23:49:43 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int		find_path(t_room **rooms, t_path *path, int index)
 int	main(int argc, char **argv)
 {
 	t_lemin everything;
-	
+
 	everything.rooms = (t_room*)malloc(sizeof(t_room) * 4);
 	ft_bzero(everything.rooms, sizeof(everything.rooms));
 	everything.rooms[0].name = "start";
@@ -127,6 +127,8 @@ int	main(int argc, char **argv)
 	everything.ant_count = 10;
 	if (!find_path(&everything.rooms, &everything.path, everything.start))
 		throw_error(GENERIC);
-//	print_ants(everything);
+	print_ants(&everything);
+	free(everything.path.pathfinder);
+
 	return 0;
 }
