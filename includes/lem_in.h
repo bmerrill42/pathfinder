@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 21:49:10 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/25 22:23:13 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 # include "ft_printf.h"
-
 #include <stdbool.h>
+
 # define RED		"\x1b[31m"
 # define GREEN		"\x1b[32m"
 # define BOLD		"\x1b[1m"
@@ -53,9 +53,8 @@ typedef struct		s_room
 {
 	bool	start;
 	bool	end;
-	char	**name;
+	char	*name;
 	bool	visited;
-	int		index;
 	int		*connections;
 	int		c_count;
 }					t_room;
