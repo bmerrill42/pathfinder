@@ -27,16 +27,20 @@ void add_to_str_array(char *str, char ***array)
 
 void store_room(char **line, t_lemin *everything)
 {
-	if (!everything->room_names)
-		new_str_array(*line, &everything->room_names);
+	if (!everything->rooms->name)
+		new_str_array(*line, &everything->rooms->name);
 	else
-		add_to_str_array(*line, &everything->room_names);
+		add_to_str_array(*line, &everything->rooms->name);
 	everything->r_ct++;
 }
 
 void store_edge (char **line,  t_lemin *everything)
 {
-	if (!everything->connections)
+	while(ft_strcmp(*line, *everything->rooms->name) == 0)
+	{
+
+	}
+	if (!everything->rooms->connections)
 		new_str_array(*line, &everything->connections);
 	else
 		add_to_str_array(*line, &everything->connections);

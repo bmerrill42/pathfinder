@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 20:22:00 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/25 21:49:10 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct		s_room
 {
 	bool	start;
 	bool	end;
-	char	*name;
+	char	**name;
 	bool	visited;
 	int		index;
 	int		*connections;
