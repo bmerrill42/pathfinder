@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/24 20:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 19:38:52 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/25 23:36:43 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		find_path(t_room **rooms, t_path *path, int index)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	t_lemin everything;
 	
@@ -129,4 +129,4 @@ int	main(int argc, char **argv)
 		throw_error(GENERIC);
 //	print_ants(everything);
 	return 0;
-}
+}*/

@@ -44,12 +44,59 @@ void store_room(char **line, t_lemin *everything)
 	everything->r_ct++;
 }
 
+void new_int_array(t_room *room, int neighbor)
+{
+	room->connections = (int*)malloc(sizeof(int));
+	room->connections[0] = neighbor;
+}
+
+void add_int_array(t_room *room, int neighbor)
+{
+	int *tmp;
+int i;
+
+i = 0;
+	tmp = (int*)malloc(room->c_count * sizeof(int));
+	while (i < room->c_count)
+	{
+		tmp[i] = room->connections[i];
+		i++;
+	}
+	tmp[i] = neighbor;
+	free(room->connections);
+	room->connections = tmp;
+}
+
+void add_connection(t_lemin *everything, int room, int neighbor)
+{
+	if (!everything->rooms[room].connections)
+		new_int_array(&everything->rooms[room], neighbor);
+	else
+		add_int_array(&everything->rooms[room], neighbor);
+	everything->rooms[room].c_count++;
+}
+
 void store_edge (char **line,  t_lemin *everything)
 {
-	if (!everything->rooms->connections)
-		new_str_array(*line, &everything->connections);
-	else
-		add_to_str_array(*line, &everything->connections);
+	char **tmp;
+int i;
+int first_match;
+int second_match;
+
+i = 0;
+	tmp = ft_strsplit(*line, '-');
+	while (!ft_strstr(everything->rooms[i].name, tmp[0]))
+		i++;
+	first_match = i;
+	i = 0;
+	while (!ft_strstr(everything->rooms[i].name, tmp[1]))
+		i++;
+	second_match = i;
+	add_connection(everything, first_match, second_match);
+	add_connection(everything, second_match, first_match);
+free(tmp[0]);
+free(tmp[1]);
+free(tmp);
 	return ;
 }
 
