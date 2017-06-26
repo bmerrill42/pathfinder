@@ -45,12 +45,12 @@ void store_edge (char **line,  t_lemin *everything)
 
 void set_start_room(t_lemin *everything)
 {
-	everything->start = everything->r_ct - 1;
+	everything->rooms[everything->r_ct - 1].start = TRUE;
 	return ;
 }
 
 void set_end_room(t_lemin *everything)
 {
-	everything->end = everything->r_ct - 1;
+	everything->rooms[everything->r_ct - 1].end = FALSE;
 	return ;
 }

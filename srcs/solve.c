@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/24 20:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 03:43:20 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/25 19:38:52 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	everything.rooms[0].index = 0;
 	everything.rooms[0].connections = (int*)malloc(sizeof(int) * 2);
 	everything.rooms[0].connections[0] = 1;
-        everything.rooms[0].connections[1] = 3;
+    everything.rooms[0].connections[1] = 3;
 	everything.rooms[0].c_count = 2;
 	everything.rooms[1].name = "butts";
 	everything.rooms[1].start = FALSE;
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	everything.rooms[1].index = 1;
 	everything.rooms[1].connections = (int*)malloc(sizeof(int) * 2);
 	everything.rooms[1].connections[0] = 0;
-        everything.rooms[1].connections[1] = 3;
+    everything.rooms[1].connections[1] = 3;
 	everything.rooms[1].c_count = 2;
 	everything.rooms[2].name = "end";
 	everything.rooms[2].start = FALSE;
@@ -118,8 +118,8 @@ int	main(int argc, char **argv)
 	everything.rooms[3].index = 3;
 	everything.rooms[3].connections = (int*)malloc(sizeof(int) * 3);
 	everything.rooms[3].connections[0] = 0;
-        everything.rooms[3].connections[1] = 1;
-        everything.rooms[3].connections[2] = 2;
+    everything.rooms[3].connections[1] = 1;
+    everything.rooms[3].connections[2] = 2;
 	everything.rooms[3].c_count = 3;
 	everything.start= 0;
 	everything.end= 2;
