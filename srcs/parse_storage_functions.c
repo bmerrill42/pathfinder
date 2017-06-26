@@ -2,21 +2,28 @@
 
 void new_str_array(char *str, t_room **rooms)
 {
+	int i;
+
+	i = 0;
 	(*rooms) = (t_room *)ft_memalloc(sizeof(t_room));
-	(*rooms)[0].name = ft_strdup(str);
+	while (str[i] != ' ')
+		i++;
+	(*rooms)[0].name = ft_strsub(str, 0, i);
 	rooms[0]->start = FALSE;
 	rooms[0]->end = FALSE;
 	rooms[0]->visited = FALSE;
 	rooms[0]->connections = NULL;
+	rooms[0]->c_count = 0;
 }
 
 void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 {
 	t_room *tmp;
 	int i;
+	int stri;
 
 	i = 0;
-	tmp = (t_room *)ft_memalloc(num_rooms * sizeof(t_room));
+	tmp = (t_room *)ft_memalloc((num_rooms + 1) * sizeof(t_room));
 	while (i < num_rooms)
 	{
 		tmp[i].name = ft_strdup((*rooms)[i].name);
@@ -24,13 +31,18 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 		tmp[i].end = (*rooms)[i].end;
 		tmp[i].visited = (*rooms)[i].visited;
 		tmp[i].connections = (*rooms)[i].connections;
+		tmp[i].c_count = (*rooms)[i].c_count;
 		i++;
 	}
 	tmp[i].start = FALSE;
 	tmp[i].end = FALSE;
 	tmp[i].visited = FALSE;
 	tmp[i].connections = NULL;
-	tmp[i].name = ft_strdup(str);
+	stri = 0;
+	while (str[stri] != ' ')
+		stri++;
+	tmp[i].name = ft_strsub(str, 0, stri);
+	tmp[i].c_count = 0;
 	free(*rooms);
 	(*rooms) = tmp;
 }
@@ -53,10 +65,10 @@ void new_connection_array(t_room *room, int neighbor)
 void add_connection_array(t_room *room, int neighbor)
 {
 	int *tmp;
-int i;
+	int i;
 
-i = 0;
-	tmp = (int*)malloc(room->c_count * sizeof(int));
+	i = 0;
+	tmp = (int*)malloc((room->c_count + 1) * sizeof(int));
 	while (i < room->c_count)
 	{
 		tmp[i] = room->connections[i];
@@ -85,11 +97,11 @@ int second_match;
 
 i = 0;
 	tmp = ft_strsplit(*line, '-');
-	while (i < everything->r_ct && !ft_strstr(everything->rooms[i].name, tmp[0]))
+	while (i < everything->r_ct && ft_strcmp(everything->rooms[i].name, tmp[0]))
 		i++;
 	first_match = i;
 	i = 0;
-	while (i < everything->r_ct && !ft_strstr(everything->rooms[i].name, tmp[1]))
+	while (i < everything->r_ct && ft_strcmp(everything->rooms[i].name, tmp[1]))
 		i++;
 	second_match = i;
 	add_connection(everything, first_match, second_match);
@@ -108,6 +120,6 @@ void set_start_room(t_lemin *everything)
 
 void set_end_room(t_lemin *everything)
 {
-	everything->rooms[everything->r_ct - 1].end = FALSE;
+	everything->rooms[everything->r_ct - 1].end = TRUE;
 	return ;
 }
