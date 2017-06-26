@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/24 20:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 23:49:43 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/25 23:52:26 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		find_path(t_room **rooms, t_path *path, int index)
 	  return (0);
 	conn_i = 0;
 	(*rooms)[index].visited = TRUE;
-	while (conn_i < (*rooms)[index].c_count && 
+	while (conn_i < (*rooms)[index].c_count &&
 			(*rooms)[(*rooms)[index].connections[conn_i]].visited == TRUE)
 		conn_i++;
 	add_path(path, index);
@@ -68,7 +68,7 @@ int		find_path(t_room **rooms, t_path *path, int index)
 	  return (1);
 	if (conn_i == (*rooms)[index].c_count)
 		return (0);
-	while (conn_i < (*rooms)[index].c_count && 
+	while (conn_i < (*rooms)[index].c_count &&
 			!find_path(rooms, path, (*rooms)[index].connections[conn_i]))
 		conn_i++;
 	if (conn_i == (*rooms)[index].c_count)
@@ -79,7 +79,7 @@ int		find_path(t_room **rooms, t_path *path, int index)
 	return (1);
 }
 
-int	main(int argc, char **argv)
+/*int	main(int argc, char **argv)
 {
 	t_lemin everything;
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 	everything.rooms[0].index = 0;
 	everything.rooms[0].connections = (int*)malloc(sizeof(int) * 2);
 	everything.rooms[0].connections[0] = 1;
-        everything.rooms[0].connections[1] = 3;
+    everything.rooms[0].connections[1] = 3;
 	everything.rooms[0].c_count = 2;
 	everything.rooms[1].name = "butts";
 	everything.rooms[1].start = FALSE;
@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 	everything.rooms[1].index = 1;
 	everything.rooms[1].connections = (int*)malloc(sizeof(int) * 2);
 	everything.rooms[1].connections[0] = 0;
-        everything.rooms[1].connections[1] = 3;
+    everything.rooms[1].connections[1] = 3;
 	everything.rooms[1].c_count = 2;
 	everything.rooms[2].name = "end";
 	everything.rooms[2].start = FALSE;
@@ -118,8 +118,8 @@ int	main(int argc, char **argv)
 	everything.rooms[3].index = 3;
 	everything.rooms[3].connections = (int*)malloc(sizeof(int) * 3);
 	everything.rooms[3].connections[0] = 0;
-        everything.rooms[3].connections[1] = 1;
-        everything.rooms[3].connections[2] = 2;
+    everything.rooms[3].connections[1] = 1;
+    everything.rooms[3].connections[2] = 2;
 	everything.rooms[3].c_count = 3;
 	everything.start= 0;
 	everything.end= 2;
@@ -131,4 +131,4 @@ int	main(int argc, char **argv)
 	free(everything.path.pathfinder);
 
 	return 0;
-}
+}*/
