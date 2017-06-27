@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 23:45:21 by tpan             ###   ########.fr       */
+/*   Updated: 2017/06/26 18:55:17 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 # include "ft_printf.h"
-#include <stdbool.h>
+# include <stdbool.h>
 
 # define RED		"\x1b[31m"
 # define GREEN		"\x1b[32m"
@@ -28,7 +28,7 @@
 # define P3			"+#+#+#+#+#+   +#+        \n     #+#    #+#          \n" P4
 # define P4			"    ###   ########.us.org    \n"
 
-enum		ERR
+enum				e_err
 {
 	GENERIC,
 	NO_ANTS,
@@ -61,30 +61,30 @@ typedef struct		s_room
 
 typedef struct		s_lemin
 {
-	int	start;
-	int	end;
-	int	ant_count;
-	int	r_ct;
+	int		start;
+	int		end;
+	int		ant_count;
+	int		r_ct;
 	t_room	*rooms;
 	t_path	path;
 }					t_lemin;
 
-void	print_ants(t_lemin *everything);
-void	throw_error(int ERR);
-void	store_room(char **line, t_lemin *everything);
-void	store_edge (char **line,  t_lemin *everything);
-void	set_start_room(t_lemin *everything);
-void	set_end_room(t_lemin *everything);
-int		is_edge_list (char **line, t_lemin *everything);
-int		is_roomlist (char **line, t_lemin *everything);
-int		is_ant(char **line, t_lemin *everything);
-int		is_command(char *line);
-int		is_comment(char **line);
-int		is_room(char **line, t_lemin *everything);
-int		is_start(char **line, t_lemin *everything);
-int		is_end(char **line, t_lemin *everything);
-int		extra_command(char **line, t_lemin *everything);
-int		is_edge(char **line,  t_lemin *everything);
-int		parse_input(t_lemin *everything);
-int		find_path(t_room **rooms, t_path *path, int index);
+void				print_ants(t_lemin *everything);
+void				throw_error(int error);
+void				store_room(char **line, t_lemin *everything);
+void				store_edge (char **line, t_lemin *everything);
+void				set_start_room(t_lemin *everything);
+void				set_end_room(t_lemin *everything);
+int					is_edge_list (char **line, t_lemin *everything);
+int					is_roomlist (char **line, t_lemin *everything);
+int					is_ant(char **line, t_lemin *everything);
+int					is_command(char *line);
+int					is_comment(char **line);
+int					is_room(char **line, t_lemin *everything);
+int					is_start(char **line, t_lemin *everything);
+int					is_end(char **line, t_lemin *everything);
+int					extra_command(char **line, t_lemin *everything);
+int					is_edge(char **line, t_lemin *everything);
+int					parse_input(t_lemin *everything);
+int					find_path(t_room **rooms, t_path *path, int index);
 #endif

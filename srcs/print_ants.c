@@ -1,10 +1,10 @@
 #include "../includes/lem_in.h"
 
-
-void init_ant_arr(int **ant_arr, int num_ants)
+void	init_ant_arr(int **ant_arr, int num_ants)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	(*ant_arr) = (int*)malloc(sizeof(int) * (num_ants + 1));
 	while (i <= num_ants)
 	{
@@ -13,12 +13,12 @@ void init_ant_arr(int **ant_arr, int num_ants)
 	}
 }
 
-void	fuck_the_norm(t_lemin *everything, int *ant_arr, int i)
+void	print_name(t_lemin *everything, int *ant_arr, int i)
 {
 	ft_printf("L%d-%s ", i,
 			everything->rooms[everything->path.pathfinder[ant_arr[i]]].name);
 }
-void print_ants(t_lemin *everything)
+void	print_ants(t_lemin *everything)
 {
 	int *ant_arr;
 	int i;
@@ -35,7 +35,7 @@ void print_ants(t_lemin *everything)
 			break;
 		while (i <= everything->ant_count && ant_arr[i] != -1)
 		{
-			fuck_the_norm(everything, ant_arr,i);
+			print_name(everything, ant_arr,i);
 			ant_arr[i]++;
 			if (ant_arr[i] == everything->path.index)
 				ant_arr[i] = -1;
