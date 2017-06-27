@@ -43,6 +43,12 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 		stri++;
 	tmp[i].name = ft_strsub(str, 0, stri);
 	tmp[i].c_count = 0;
+	stri = 0;
+	while (stri < num_rooms)
+	{
+		free((*rooms)[stri].name);
+		stri++;
+	}
 	free(*rooms);
 	(*rooms) = tmp;
 }
