@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 20:18:06 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/27 01:07:27 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:49:25 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ int					is_edge(char **line, t_lemin *everything);
 int					parse_input(t_lemin *everything);
 int					find_path(t_room **rooms, t_path *path, int index);
 void				add_connection(t_lemin *everything, int room, int neighbor);
-void				init_rooms(t_room **rooms,t_room **tmp, int i);
+void				init_rooms(t_room **rooms, t_room **tmp, int i);
 #endif
