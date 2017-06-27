@@ -55,12 +55,38 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 	(*rooms) = tmp;
 }
 
+void dup_roomp(char **line, t_lemin *everything)
+{
+	int i;
+	int space;
+	char *tmp;
+
+	space = 0;
+	while ((*line)[space] != ' ')
+		space++;
+	tmp = ft_strsub(*line, 0, space);
+	i = 0;
+	while (i < (*everything).r_ct)
+	{
+		if (!ft_strcmp(tmp, (*everything).rooms[i].name))
+		{
+			free(tmp);
+			throw_error(DUP_NAME);
+		}
+		i++;
+	}
+	free(tmp);
+}
+
 void store_room(char **line, t_lemin *everything)
 {
 	if (!(*everything).rooms)
 		new_str_array(*line, &everything->rooms);
 	else
+	{
+		dup_roomp(line, everything);
 		add_to_str_array(*line, &everything->rooms, everything->r_ct);
+	}
 	everything->r_ct++;
 }
 
