@@ -28,7 +28,7 @@ void print_ants(t_lemin *everything)
 			i++;
 		if (i > everything->ant_count)
 			break;
-		while (i <= everything->ant_count && ant_arr[i] > 0)
+		while (i <= everything->ant_count && ant_arr[i] != -1)
 		{
 			ft_printf("L%d-%s ", i, everything->rooms[everything->path.pathfinder[ant_arr[i]]].name);
 			ant_arr[i]++;

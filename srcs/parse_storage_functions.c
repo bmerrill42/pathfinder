@@ -91,11 +91,11 @@ void add_connection(t_lemin *everything, int room, int neighbor)
 void store_edge (char **line,  t_lemin *everything)
 {
 	char **tmp;
-int i;
-int first_match;
-int second_match;
+	int i;
+	int first_match;
+	int second_match;
 
-i = 0;
+	i = 0;
 	tmp = ft_strsplit(*line, '-');
 	while (i < everything->r_ct && ft_strcmp(everything->rooms[i].name, tmp[0]))
 		i++;
@@ -106,20 +106,22 @@ i = 0;
 	second_match = i;
 	add_connection(everything, first_match, second_match);
 	add_connection(everything, second_match, first_match);
-free(tmp[0]);
-free(tmp[1]);
-free(tmp);
+	free(tmp[0]);
+	free(tmp[1]);
+	free(tmp);
 	return ;
 }
 
 void set_start_room(t_lemin *everything)
 {
+	everything->start = everything->r_ct - 1;
 	everything->rooms[everything->r_ct - 1].start = TRUE;
 	return ;
 }
 
 void set_end_room(t_lemin *everything)
 {
+	everything->end = everything->r_ct - 1;
 	everything->rooms[everything->r_ct - 1].end = TRUE;
 	return ;
 }

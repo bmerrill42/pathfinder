@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/24 20:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/25 23:52:26 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/26 18:38:54 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ void		add_int_to_array(t_path *path, int index)
 	int i;
 
 	i = 0;
-	tmp = (int*)malloc(sizeof(path->index) * sizeof(int));
-	while (i < path->index)
+	tmp = (int*)malloc(((*path).index + 1) * sizeof(int));
+	while (i < (*path).index)
 	  {
-	    tmp[i] = path->pathfinder[i];
+	    tmp[i] = (*path).pathfinder[i];
 	    i++;
 	  }
 	tmp[i] = index;
-	free(path->pathfinder);
-	path->pathfinder = tmp;
+	free((*path).pathfinder);
+	(*path).pathfinder = tmp;
 }
 
 void		add_path(t_path *path, int index)
@@ -67,7 +67,10 @@ int		find_path(t_room **rooms, t_path *path, int index)
 	if ((*rooms)[index].end)
 	  return (1);
 	if (conn_i == (*rooms)[index].c_count)
+	{
+		remove_path(path);
 		return (0);
+	}
 	while (conn_i < (*rooms)[index].c_count &&
 			!find_path(rooms, path, (*rooms)[index].connections[conn_i]))
 		conn_i++;
