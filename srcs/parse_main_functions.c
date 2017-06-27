@@ -1,6 +1,6 @@
 #include "../includes/lem_in.h"
 
-int	is_edge_list (char **line, t_lemin *everything)
+int		is_edge_list(char **line, t_lemin *everything)
 {
 	while (is_comment(line))
 		;
@@ -27,20 +27,23 @@ void	start_or_end(char **line, t_lemin *everything)
 		throw_error(GENERIC);
 }
 
-int	is_roomlist(char **line, t_lemin *everything)
+int		is_roomlist(char **line, t_lemin *everything)
 {
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
+	while (is_comment(line) || is_room(line, everything)
+			|| extra_command(line, everything))
 		;
-		start_or_end(line, everything);
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
+	start_or_end(line, everything);
+	while (is_comment(line) || is_room(line, everything)
+			|| extra_command(line, everything))
 		;
-		start_or_end(line, everything);
-	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
+	start_or_end(line, everything);
+	while (is_comment(line) || is_room(line, everything)
+			|| extra_command(line, everything))
 		;
 	return (1);
 }
 
-int	is_ant(char **line, t_lemin *everything)
+int		is_ant(char **line, t_lemin *everything)
 {
 	int i;
 
@@ -50,7 +53,7 @@ int	is_ant(char **line, t_lemin *everything)
 	while (ft_isdigit(line[0][i++]))
 		;
 	if (line[0][i] != '\0')
-		return(0);
+		return (0);
 	everything->ant_count = ft_atoi(*line);
 	ft_putendl(*line);
 	free(*line);
