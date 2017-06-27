@@ -21,10 +21,10 @@ Irlande 0 0
 ##end
 Islande 0 0
 Italie 0 0
-lettonie 0 0
-liechtenstein 0 0
-lituanie 0 0
-luxembourg 0 0
+_Lettonie 0 0
+_Liechtenstein 0 0
+_Lituanie 0 0
+_Luxembourg 0 0
 Macedoine 0 0
 Malte 0 0
 Moldavie 0 0
@@ -38,74 +38,74 @@ Republique_Tcheque 0 0
 Roumanie 0 0
 Royaume_Uni 0 0
 Russie 0 0
-serbie 0 0
-slovaquie 0 0
-slovenie 0 0
-suede 0 0
-suisse 0 0
+Serbie 0 0
+Slovaquie 0 0
+Slovenie 0 0
+Suede 0 0
+Suisse 0 0
 Ukraine 0 0
 Albanie-Montenegro
-Albanie-serbie
+Albanie-Serbie
 Albanie-Macedoine
 Albanie-Grece
 Allemagne-France
-Allemagne-luxembourg
+Allemagne-_Luxembourg
 Allemagne-Belgique
 Allemagne-Pays_Bas
-Allemagne-suisse
+Allemagne-Suisse
 Allemagne-Autriche
 Allemagne-Republique_Tcheque
 Allemagne-Pologne
 Allemagne-Danemark
 Andorre-France
 Andorre-Espagne
-Autriche-suisse
+Autriche-Suisse
 Autriche-Allemagne
 Autriche-Republique_Tcheque
-Autriche-slovaquie
+Autriche-Slovaquie
 Autriche-Hongrie
-Autriche-slovenie
+Autriche-Slovenie
 Autriche-Italie
-Autriche-liechtenstein
+Autriche-_Liechtenstein
 Belgique-Pays_Bas
-Belgique-luxembourg
+Belgique-_Luxembourg
 Belgique-Allemagne
 Belgique-France
 Bielorussie-Russie
 Bielorussie-Ukraine
 Bielorussie-Pologne
-Bielorussie-lituanie
-Bielorussie-lettonie
+Bielorussie-_Lituanie
+Bielorussie-_Lettonie
 Bosnie_Herzegovine-Croatie
-Bosnie_Herzegovine-serbie
+Bosnie_Herzegovine-Serbie
 Bosnie_Herzegovine-Montenegro
 Bulgarie-Roumanie
-Bulgarie-serbie
+Bulgarie-Serbie
 Bulgarie-Macedoine
 Bulgarie-Grece
 Chypre-Grece
-Croatie-slovenie
+Croatie-Slovenie
 Croatie-Hongrie
-Croatie-serbie
+Croatie-Serbie
 Croatie-Bosnie_Herzegovine
 Danemark-Allemagne
-Danemark-suede
+Danemark-Suede
 Espagne-Andorre
 Espagne-France
 Espagne-Portugal
-Estonie-lettonie
+Estonie-_Lettonie
 Estonie-Russie
 Estonie-Finlande
 Finlande-Estonie
-Finlande-suede
+Finlande-Suede
 Finlande-Norvege
 Finlande-Russie
 France-Andorre
 France-Royaume_Uni
 France-Belgique
-France-luxembourg
+France-_Luxembourg
 France-Allemagne
-France-suisse
+France-Suisse
 France-Italie
 France-Espagne
 France-Monaco
@@ -114,35 +114,35 @@ Grece-Chypre
 Grece-Macedoine
 Grece-Bulgarie
 Hongrie-Autriche
-Hongrie-slovaquie
+Hongrie-Slovaquie
 Hongrie-Ukraine
 Hongrie-Roumanie
-Hongrie-serbie
+Hongrie-Serbie
 Hongrie-Croatie
-Hongrie-slovenie
+Hongrie-Slovenie
 Irlande-Royaume_Uni
 Irlande-Islande
 Islande-Irlande
 Italie-France
-Italie-suisse
+Italie-Suisse
 Italie-Autriche
-Italie-slovenie
+Italie-Slovenie
 Italie-Malte
-lettonie-Estonie
-lettonie-lituanie
-lettonie-Russie
-lettonie-Bielorussie
-liechtenstein-suisse
-liechtenstein-Autriche
-lituanie-Russie
-lituanie-lettonie
-lituanie-Bielorussie
-lituanie-Pologne
-luxembourg-Allemagne
-luxembourg-France
-luxembourg-Belgique
+_Lettonie-Estonie
+_Lettonie-_Lituanie
+_Lettonie-Russie
+_Lettonie-Bielorussie
+_Liechtenstein-Suisse
+_Liechtenstein-Autriche
+_Lituanie-Russie
+_Lituanie-_Lettonie
+_Lituanie-Bielorussie
+_Lituanie-Pologne
+_Luxembourg-Allemagne
+_Luxembourg-France
+_Luxembourg-Belgique
 Macedoine-Albanie
-Macedoine-serbie
+Macedoine-Serbie
 Macedoine-Bulgarie
 Macedoine-Grece
 Malte-Italie
@@ -150,68 +150,68 @@ Moldavie-Ukraine
 Moldavie-Roumanie
 Monaco-France
 Montenegro-Bosnie_Herzegovine
-Montenegro-serbie
+Montenegro-Serbie
 Montenegro-Albanie
 Norvege-Danemark
-Norvege-suede
+Norvege-Suede
 Norvege-Russie
 Pays_Bas-Belgique
 Pays_Bas-Allemagne
 Pologne-Allemagne
 Pologne-Republique_Tcheque
-Pologne-slovaquie
+Pologne-Slovaquie
 Pologne-Ukraine
 Pologne-Bielorussie
-Pologne-lituanie
+Pologne-_Lituanie
 Pologne-Russie
 Portugal-Espagne
 Republique_Tcheque-Allemagne
 Republique_Tcheque-Pologne
-Republique_Tcheque-slovaquie
+Republique_Tcheque-Slovaquie
 Republique_Tcheque-Autriche
 Roumanie-Ukraine
 Roumanie-Moldavie
 Roumanie-Bulgarie
-Roumanie-serbie
+Roumanie-Serbie
 Roumanie-Hongrie
 Royaume_Uni-Irlande
 Royaume_Uni-France
 Russie-Finlande
 Russie-Estonie
-Russie-lettonie
-Russie-lituanie
+Russie-_Lettonie
+Russie-_Lituanie
 Russie-Pologne
 Russie-Bielorussie
 Russie-Ukraine
 Russie-Norvege
-serbie-Hongrie
-serbie-Roumanie
-serbie-Bulgarie
-serbie-Macedoine
-serbie-Albanie
-serbie-Montenegro
-serbie-Bosnie_Herzegovine
-serbie-Croatie
-slovaquie-Republique_Tcheque
-slovaquie-Pologne
-slovaquie-Ukraine
-slovaquie-Hongrie
-slovaquie-Autriche
-slovenie-Italie
-slovenie-Autriche
-slovenie-Hongrie
-slovenie-Croatie
-suede-Norvege
-suede-Finlande
-suede-Danemark
-suisse-France
-suisse-Italie
-suisse-Autriche
-suisse-liechtenstein
+Serbie-Hongrie
+Serbie-Roumanie
+Serbie-Bulgarie
+Serbie-Macedoine
+Serbie-Albanie
+Serbie-Montenegro
+Serbie-Bosnie_Herzegovine
+Serbie-Croatie
+Slovaquie-Republique_Tcheque
+Slovaquie-Pologne
+Slovaquie-Ukraine
+Slovaquie-Hongrie
+Slovaquie-Autriche
+Slovenie-Italie
+Slovenie-Autriche
+Slovenie-Hongrie
+Slovenie-Croatie
+Suede-Norvege
+Suede-Finlande
+Suede-Danemark
+Suisse-France
+Suisse-Italie
+Suisse-Autriche
+Suisse-_Liechtenstein
 Ukraine-Russie
 Ukraine-Bielorussie
 Ukraine-Pologne
-Ukraine-slovaquie
+Ukraine-Slovaquie
 Ukraine-Hongrie
 Ukraine-Roumanie
 Ukraine-Moldavie
