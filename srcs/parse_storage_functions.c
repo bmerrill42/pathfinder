@@ -6,7 +6,7 @@
 /*   By: bmerrill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 01:08:57 by bmerrill          #+#    #+#             */
-/*   Updated: 2017/06/27 01:08:59 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:48:46 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	add_to_str_array(char *str, t_room **rooms, int num_rooms)
 	int		stri;
 
 	i = 0;
-	tmp = (t_room *)ft_memalloc((num_rooms + 1) * sizeof(t_room));
+	tmp = (t_room *)malloc((num_rooms + 1) * sizeof(t_room));
 	while (i < num_rooms)
 	{
 		init_rooms(rooms, &tmp, i);
@@ -94,6 +94,8 @@ void	store_edge(char **line, t_lemin *everything)
 	i = 0;
 	while (i < everything->r_ct && ft_strcmp(everything->rooms[i].name, tmp[1]))
 		i++;
+	if (i >= everything->r_ct)
+		throw_error(GENERIC);
 	second_match = i;
 	add_connection(everything, first_match, second_match);
 	add_connection(everything, second_match, first_match);

@@ -6,7 +6,7 @@
 /*   By: bmerrill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 01:09:11 by bmerrill          #+#    #+#             */
-/*   Updated: 2017/06/27 01:09:14 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:50:02 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_ant_arr(int **ant_arr, int num_ants)
 	int i;
 
 	i = 0;
-	(*ant_arr) = (int*)malloc(sizeof(int) * (num_ants + 1));
+	(*ant_arr) = (int*)malloc(sizeof(int) * (num_ants + 2));
 	while (i <= num_ants)
 	{
 		(*ant_arr)[i] = -1;
@@ -44,7 +44,7 @@ void	print_ants(t_lemin *everything)
 		i = 1;
 		while (ant_arr[i] < 0 && i < everything->ant_count + 1)
 			i++;
-		if (i > everything->ant_count)
+		if (i >= everything->ant_count + 1)
 			break ;
 		while (i <= everything->ant_count && ant_arr[i] != -1)
 		{

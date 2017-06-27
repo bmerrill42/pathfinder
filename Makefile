@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/03 19:55:55 by tpan              #+#    #+#              #
-#    Updated: 2017/06/27 01:12:01 by bmerrill         ###   ########.fr        #
+#    Updated: 2017/06/27 13:39:29 by bmerrill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = lem-in
@@ -75,8 +75,7 @@ re: fclean all
 
 debug: $(LIBFT) $(FT_PRINTF)
 	echo "Compiling push_swap with debugging options"
-	$(CC) $(CFLAGS) $(SRC) $(PSMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o push_swap_debug
-	$(CC) $(CFLAGS) $(SRC) $(CMAIN) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o checker_debug
+	$(CC) $(CFLAGS) $(SRC) $(LIBFT) $(FT_PRINTF) -I$(INCDIR) $(DEBUGFLAGS) -o $(NAME)
 	echo "Compiled push_swap debug"
 
 leakcheck: $(LIBFT) $(FT_PRINTF)

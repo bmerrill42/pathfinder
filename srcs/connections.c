@@ -6,7 +6,7 @@
 /*   By: bmerrill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 01:08:17 by bmerrill          #+#    #+#             */
-/*   Updated: 2017/06/27 01:08:20 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/27 14:22:19 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	new_connection_array(t_room *room, int neighbor)
 {
-	room->connections = (int*)malloc(sizeof(int) * 2);
+	room->connections = (int*)malloc(sizeof(int));
 	room->connections[0] = neighbor;
 }
 
@@ -43,6 +43,8 @@ void	add_connection(t_lemin *everything, int room, int neighbor)
 	int i;
 
 	i = 0;
+	if (room > (*everything).r_ct)
+		return ;
 	while (i < (*everything).rooms[room].c_count)
 	{
 		if ((*everything).rooms[room].connections)
