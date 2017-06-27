@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/24 20:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/26 19:03:33 by tpan             ###   ########.fr       */
+/*   Created: 2017/06/26 19:14:08 by tpan              #+#    #+#             */
+/*   Updated: 2017/06/26 19:14:08 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,18 @@ void		add_path(t_path *path, int index)
 
 void		remove_path(t_path *path)
 {
-	path->pathfinder[path->index] = -1;
+	int *tmp;
+	int i;
+
+	i = 0;
+	tmp = (int*)malloc(((*path).index + 1) * sizeof(int));
+	while (i < (*path).index)
+	{
+	    tmp[i] = (*path).pathfinder[i];
+	    i++;
+	}
+	free((*path).pathfinder);
+	(*path).pathfinder = tmp;
 	path->index--;
 }
 
