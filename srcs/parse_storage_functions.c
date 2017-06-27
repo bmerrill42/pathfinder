@@ -16,6 +16,18 @@ void new_str_array(char *str, t_room **rooms)
 	rooms[0]->c_count = 0;
 }
 
+void old_rooms_free(t_room **rooms, int num_rooms)
+{
+	int stri;
+
+	stri = 0;
+	while (stri < num_rooms)
+	{
+		free((*rooms)[stri].name);
+		stri++;
+	}
+}
+
 void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 {
 	t_room *tmp;
@@ -38,12 +50,7 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 		stri++;
 	tmp[i].name = ft_strsub(str, 0, stri);
 	tmp[i].c_count = 0;
-	stri = 0;
-	while (stri < num_rooms)
-	{
-		free((*rooms)[stri].name);
-		stri++;
-	}
+	old_rooms_free(rooms, num_rooms);
 	free(*rooms);
 	(*rooms) = tmp;
 }
