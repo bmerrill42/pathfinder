@@ -6,7 +6,7 @@
 /*   By: bmerrill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 01:09:22 by bmerrill          #+#    #+#             */
-/*   Updated: 2017/06/27 13:57:38 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:30:50 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int		is_ant(char **line, t_lemin *everything)
 		;
 	while (ft_isdigit(line[0][i]))
 		i++;
+	if (line[0][0] == '\0')
+		return (0);
 	if (line[0][i] != '\0')
 		return (0);
 	everything->ant_count = ft_atoi(*line);

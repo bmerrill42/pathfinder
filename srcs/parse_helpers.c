@@ -6,7 +6,7 @@
 /*   By: bmerrill <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 01:01:29 by bmerrill          #+#    #+#             */
-/*   Updated: 2017/06/27 01:01:47 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:34:07 by bmerrill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		is_command(char *line)
 	int i;
 
 	i = 2;
+	if (line[0] == '\0')
+		return (0);
 	while (line[0] == '#' && line[1] == '#' && ft_isprint(line[i]))
 		i++;
 	if (line[i] != '\0')
