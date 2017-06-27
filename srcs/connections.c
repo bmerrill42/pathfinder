@@ -1,12 +1,12 @@
 #include "../includes/lem_in.h"
 
-void new_connection_array(t_room *room, int neighbor)
+void	new_connection_array(t_room *room, int neighbor)
 {
 	room->connections = (int*)malloc(sizeof(int) * 2);
 	room->connections[0] = neighbor;
 }
 
-void add_connection_array(t_room *room, int neighbor)
+void	add_connection_array(t_room *room, int neighbor)
 {
 	int *tmp;
 	int i;
@@ -26,12 +26,11 @@ void add_connection_array(t_room *room, int neighbor)
 	(*room).connections = tmp;
 }
 
-void add_connection(t_lemin *everything, int room, int neighbor)
+void	add_connection(t_lemin *everything, int room, int neighbor)
 {
-//	if (!everything->rooms[room].connections)
-//		new_connection_array(&everything->rooms[room], neighbor);
-//	else
-	int i = 0;
+	int i;
+
+	i = 0;
 	while (i < (*everything).rooms[room].c_count)
 	{
 		if ((*everything).rooms[room].connections)
