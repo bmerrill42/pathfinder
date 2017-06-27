@@ -26,13 +26,6 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 	tmp = (t_room *)ft_memalloc((num_rooms + 1) * sizeof(t_room));
 	while (i < num_rooms)
 	{
-		/*tmp[i].name = ft_strdup((*rooms)[i].name);
-		tmp[i].start = (*rooms)[i].start;
-		tmp[i].end = (*rooms)[i].end;
-		tmp[i].visited = (*rooms)[i].visited;
-		tmp[i].connections = (*rooms)[i].connections;
-		tmp[i].c_count = (*rooms)[i].c_count;
-		*/
 		init_rooms(rooms, &tmp, i);
 		i++;
 	}
@@ -85,19 +78,5 @@ void store_edge (char **line,  t_lemin *everything)
 	free(tmp[0]);
 	free(tmp[1]);
 	free(tmp);
-	return ;
-}
-
-void set_start_room(t_lemin *everything)
-{
-	everything->start = everything->r_ct - 1;
-	everything->rooms[everything->r_ct - 1].start = TRUE;
-	return ;
-}
-
-void set_end_room(t_lemin *everything)
-{
-	everything->end = everything->r_ct - 1;
-	everything->rooms[everything->r_ct - 1].end = TRUE;
 	return ;
 }

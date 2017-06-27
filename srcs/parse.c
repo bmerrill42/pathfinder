@@ -1,12 +1,5 @@
 #include "../includes/lem_in.h"
 
-typedef struct s_node
-{
-	char *name;
-	int index;
-	int visited_p;
-} t_node;
-
 int is_command(char *line)
 {
 	int i;
