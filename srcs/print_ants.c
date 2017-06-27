@@ -13,6 +13,11 @@ void init_ant_arr(int **ant_arr, int num_ants)
 	}
 }
 
+void	fuck_the_norm(t_lemin *everything, int *ant_arr, int i)
+{
+	ft_printf("L%d-%s ", i,
+			everything->rooms[everything->path.pathfinder[ant_arr[i]]].name);
+}
 void print_ants(t_lemin *everything)
 {
 	int *ant_arr;
@@ -30,7 +35,7 @@ void print_ants(t_lemin *everything)
 			break;
 		while (i <= everything->ant_count && ant_arr[i] > 0)
 		{
-			ft_printf("L%d-%s ", i, everything->rooms[everything->path.pathfinder[ant_arr[i]]].name);
+			fuck_the_norm(everything, ant_arr,i);
 			ant_arr[i]++;
 			if (ant_arr[i] == everything->path.index)
 				ant_arr[i] = -1;

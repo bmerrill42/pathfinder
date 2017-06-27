@@ -1,6 +1,6 @@
 #include "../includes/lem_in.h"
 
-int main()
+int	main(void)
 {
 	t_lemin lemin;
 
