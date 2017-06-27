@@ -6,17 +6,17 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/03 19:55:55 by tpan              #+#    #+#              #
-#    Updated: 2017/06/26 20:38:03 by tpan             ###   ########.fr        #
+#    Updated: 2017/06/27 01:12:01 by bmerrill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = lem_in
+NAME = lem-in
 CC = gcc
 LIBFT = ./libft/libft.a
 FT_PRINTF = ./ft_printf/ft_printf.a
 CFLAGS = -Wall -Werror -Wextra
 DEBUGFLAGS = -fsanitize=address -g
 LEAKCHECK = -g
-SRCFILES = 	parse.c error.c parse_main_functions.c parse_storage_functions.c lem_in.c solve.c print_ants.c connections.c init.c\
+SRCFILES = 	parse.c error.c parse_main_functions.c parse_storage_functions.c lem_in.c solve.c print_ants.c connections.c init.c parse_helpers.c\
 
 SRC = $(addprefix $(SRCDIR),$(SRCFILES))
 OBJ = $(addprefix $(OBJDIR),$(SRCFILES:.c=.o))

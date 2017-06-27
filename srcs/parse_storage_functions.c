@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_storage_functions.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmerrill <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/06/27 01:08:57 by bmerrill          #+#    #+#             */
+/*   Updated: 2017/06/27 01:08:59 by bmerrill         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/lem_in.h"
 
-void new_str_array(char *str, t_room **rooms)
+void	new_str_array(char *str, t_room **rooms)
 {
 	int i;
 
@@ -16,7 +28,7 @@ void new_str_array(char *str, t_room **rooms)
 	rooms[0]->c_count = 0;
 }
 
-void old_rooms_free(t_room **rooms, int num_rooms)
+void	old_rooms_free(t_room **rooms, int num_rooms)
 {
 	int stri;
 
@@ -28,11 +40,11 @@ void old_rooms_free(t_room **rooms, int num_rooms)
 	}
 }
 
-void add_to_str_array(char *str, t_room **rooms, int num_rooms)
+void	add_to_str_array(char *str, t_room **rooms, int num_rooms)
 {
-	t_room *tmp;
-	int i;
-	int stri;
+	t_room	*tmp;
+	int		i;
+	int		stri;
 
 	i = 0;
 	tmp = (t_room *)ft_memalloc((num_rooms + 1) * sizeof(t_room));
@@ -55,30 +67,7 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 	(*rooms) = tmp;
 }
 
-void dup_roomp(char **line, t_lemin *everything)
-{
-	int i;
-	int space;
-	char *tmp;
-
-	space = 0;
-	while ((*line)[space] != ' ')
-		space++;
-	tmp = ft_strsub(*line, 0, space);
-	i = 0;
-	while (i < (*everything).r_ct)
-	{
-		if (!ft_strcmp(tmp, (*everything).rooms[i].name))
-		{
-			free(tmp);
-			throw_error(DUP_NAME);
-		}
-		i++;
-	}
-	free(tmp);
-}
-
-void store_room(char **line, t_lemin *everything)
+void	store_room(char **line, t_lemin *everything)
 {
 	if (!(*everything).rooms)
 		new_str_array(*line, &everything->rooms);
@@ -90,12 +79,12 @@ void store_room(char **line, t_lemin *everything)
 	everything->r_ct++;
 }
 
-void store_edge (char **line,  t_lemin *everything)
+void	store_edge(char **line, t_lemin *everything)
 {
-	char **tmp;
-	int i;
-	int first_match;
-	int second_match;
+	char	**tmp;
+	int		i;
+	int		first_match;
+	int		second_match;
 
 	i = 0;
 	tmp = ft_strsplit(*line, '-');
