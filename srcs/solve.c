@@ -6,7 +6,7 @@
 /*   By: tpan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 19:14:08 by tpan              #+#    #+#             */
-/*   Updated: 2017/06/26 19:24:33 by bmerrill         ###   ########.fr       */
+/*   Updated: 2017/06/26 19:27:17 by tpan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		add_path(t_path *path, int index)
 	path->index++;
 }
 
-int		remove_path(t_path *path)
+int			remove_path(t_path *path)
 {
 	int *tmp;
 	int i;
@@ -67,13 +67,13 @@ int			find_path(t_room **rooms, t_path *path, int index)
 	int conn_i;
 
 	if (!(*rooms))
-		return 0;
+		return (0);
 	if ((*rooms)[index].visited)
 		return (0);
 	conn_i = 0;
 	(*rooms)[index].visited = TRUE;
 	while (conn_i < (*rooms)[index].c_count &&
-		   (*rooms)[(*rooms)[index].connections[conn_i]].visited == TRUE)
+			(*rooms)[(*rooms)[index].connections[conn_i]].visited == TRUE)
 		conn_i++;
 	add_path(path, index);
 	if ((*rooms)[index].end)
@@ -81,7 +81,7 @@ int			find_path(t_room **rooms, t_path *path, int index)
 	if (conn_i == (*rooms)[index].c_count)
 		return (remove_path(path));
 	while (conn_i < (*rooms)[index].c_count &&
-		   !find_path(rooms, path, (*rooms)[index].connections[conn_i]))
+			!find_path(rooms, path, (*rooms)[index].connections[conn_i]))
 		conn_i++;
 	if (conn_i == (*rooms)[index].c_count)
 		return (remove_path(path));

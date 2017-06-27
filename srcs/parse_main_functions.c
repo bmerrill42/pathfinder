@@ -1,6 +1,6 @@
 #include "../includes/lem_in.h"
 
-int is_edge_list (char **line, t_lemin *everything)
+int	is_edge_list (char **line, t_lemin *everything)
 {
 	while (is_comment(line))
 		;
@@ -11,42 +11,36 @@ int is_edge_list (char **line, t_lemin *everything)
 	return (1);
 }
 
-int is_roomlist (char **line, t_lemin *everything)
+void	start_or_end(char **line, t_lemin *everything)
+{
+	if (!ft_strcmp("##start", *line))
+	{
+		if (!is_start(line, everything))
+			throw_error(NO_START);
+	}
+	else if (!ft_strcmp("##end", *line))
+	{
+		if (!is_end(line, everything))
+			throw_error(NO_END);
+	}
+	else
+		throw_error(GENERIC);
+}
+
+int	is_roomlist(char **line, t_lemin *everything)
 {
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
-	if (!ft_strcmp("##start", *line))
-	{
-		if (!is_start(line, everything))
-			throw_error(NO_START);
-	}
-	else if (!ft_strcmp("##end", *line))
-	{
-		if (!is_end(line, everything))
-			throw_error(NO_END);
-	}
-	else
-		throw_error(GENERIC);
+		start_or_end(line, everything);
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
-	if (!ft_strcmp("##start", *line))
-	{
-		if (!is_start(line, everything))
-			throw_error(NO_START);
-	}
-	else if (!ft_strcmp("##end", *line))
-	{
-		if (!is_end(line, everything))
-			throw_error(NO_END);
-	}
-	else
-		throw_error(GENERIC);
+		start_or_end(line, everything);
 	while (is_comment(line) || is_room(line, everything) || extra_command(line, everything))
 		;
 	return (1);
 }
 
-int is_ant(char **line, t_lemin *everything)
+int	is_ant(char **line, t_lemin *everything)
 {
 	int i;
 
