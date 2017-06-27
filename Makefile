@@ -6,7 +6,7 @@
 #    By: tpan <marvin@42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/03 19:55:55 by tpan              #+#    #+#              #
-#    Updated: 2017/06/26 12:59:51 by bmerrill         ###   ########.fr        #
+#    Updated: 2017/06/26 20:38:03 by tpan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = lem_in
@@ -16,7 +16,7 @@ FT_PRINTF = ./ft_printf/ft_printf.a
 CFLAGS = -Wall -Werror -Wextra
 DEBUGFLAGS = -fsanitize=address -g
 LEAKCHECK = -g
-SRCFILES = 	parse.c error.c parse_main_functions.c parse_storage_functions.c lem_in.c solve.c print_ants.c\
+SRCFILES = 	parse.c error.c parse_main_functions.c parse_storage_functions.c lem_in.c solve.c print_ants.c connections.c init.c\
 
 SRC = $(addprefix $(SRCDIR),$(SRCFILES))
 OBJ = $(addprefix $(OBJDIR),$(SRCFILES:.c=.o))

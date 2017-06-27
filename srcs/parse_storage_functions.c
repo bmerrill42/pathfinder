@@ -26,12 +26,14 @@ void add_to_str_array(char *str, t_room **rooms, int num_rooms)
 	tmp = (t_room *)ft_memalloc((num_rooms + 1) * sizeof(t_room));
 	while (i < num_rooms)
 	{
-		tmp[i].name = ft_strdup((*rooms)[i].name);
+		/*tmp[i].name = ft_strdup((*rooms)[i].name);
 		tmp[i].start = (*rooms)[i].start;
 		tmp[i].end = (*rooms)[i].end;
 		tmp[i].visited = (*rooms)[i].visited;
 		tmp[i].connections = (*rooms)[i].connections;
 		tmp[i].c_count = (*rooms)[i].c_count;
+		*/
+		init_rooms(rooms, &tmp, i);
 		i++;
 	}
 	tmp[i].start = FALSE;
@@ -60,41 +62,6 @@ void store_room(char **line, t_lemin *everything)
 	else
 		add_to_str_array(*line, &everything->rooms, everything->r_ct);
 	everything->r_ct++;
-}
-
-void new_connection_array(t_room *room, int neighbor)
-{
-	int *tmp;
-	tmp = (int*)malloc(sizeof(int));
-	room->connections = tmp;
-	free(tmp);
-	room->connections[0] = neighbor;
-}
-
-void add_connection_array(t_room *room, int neighbor)
-{
-	int *tmp;
-	int i;
-
-	i = 0;
-	tmp = (int*)malloc((room->c_count + 1) * sizeof(int));
-	while (i < room->c_count)
-	{
-		tmp[i] = room->connections[i];
-		i++;
-	}
-	tmp[i] = neighbor;
-	free(room->connections);
-	room->connections = tmp;
-}
-
-void add_connection(t_lemin *everything, int room, int neighbor)
-{
-	if (!everything->rooms[room].connections)
-		new_connection_array(&everything->rooms[room], neighbor);
-	else
-		add_connection_array(&everything->rooms[room], neighbor);
-	everything->rooms[room].c_count++;
 }
 
 void store_edge (char **line,  t_lemin *everything)
