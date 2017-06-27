@@ -39,6 +39,15 @@ int is_comment(char **line)
 
 }
 
+int is_dash_and_nspace(char **line, int *i)
+{
+	if (line[0][*i] != ' ')
+		return (0);
+	(*i)++;
+	if (line[0][*i] == '-')
+		(*i)++;
+	return (1);
+}
 int is_room(char **line, t_lemin *everything)
 {
 	int i;
@@ -47,23 +56,18 @@ int is_room(char **line, t_lemin *everything)
 	while (ft_isprint(line[0][i]) && line[0][i] != ' ' && line [0][0] != 'L' &&
 		   line[0][i] != '-')
 		i++;
-	if (line[0][i] != ' ')
+	if (!is_dash_and_nspace(line, &i))
 		return (0);
-	i++;
-	if (line[0][i] == '-')
-		i++;
 	while (ft_isdigit(line[0][i]))
 		i++;
-	if (line[0][i] != ' ')
+	if (!is_dash_and_nspace(line, &i))
 		return (0);
-	i++;
-	if (line[0][i] == '-')
-		i++;
 	while (ft_isdigit(line[0][i]))
 		i++;
 	if (!(line[0][i] == '\0'))
 		return (0);
 	store_room(line, everything);
+	ft_putendl(*line);
 	free(*line);
 	get_next_line(0, line);
 	return (1);
@@ -123,6 +127,7 @@ int is_edge(char **line,  t_lemin *everything)
 	if (line[0][0] != '#' && line[0][i] != '\0')
 		return (0);
 	store_edge(line, everything);
+	ft_putendl(*line);
 	free(*line);
 	get_next_line(0, line);
 	return (1);
@@ -149,7 +154,8 @@ int parse_input(t_lemin *everything)
 		get_next_line(-42, &line);
 		return (1);
 	}
-	free(line);
+	if (line)
+		free(line);
 	get_next_line(-42, &line);
 	return (0);
 }

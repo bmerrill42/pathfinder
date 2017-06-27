@@ -64,7 +64,10 @@ void store_room(char **line, t_lemin *everything)
 
 void new_connection_array(t_room *room, int neighbor)
 {
-	room->connections = (int*)malloc(sizeof(int));
+	int *tmp;
+	tmp = (int*)malloc(sizeof(int));
+	room->connections = tmp;
+	free(tmp);
 	room->connections[0] = neighbor;
 }
 

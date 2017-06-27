@@ -22,6 +22,7 @@ int	main(void)
 	parse_input(&lemin);
 	if (!find_path(&lemin.rooms, &lemin.path, lemin.start))
 		throw_error(GENERIC);
+	ft_putchar('\n');
 	print_ants(&lemin);
 	burn_them_all(&lemin);
 }
