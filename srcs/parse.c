@@ -145,6 +145,8 @@ int parse_input(t_lemin *everything)
 			throw_error(GENERIC);
 		if (!is_edge_list(&line, everything))
 			throw_error(GENERIC);
+		free(line);
+		get_next_line(-42, &line);
 		return (1);
 	}
 	free(line);
