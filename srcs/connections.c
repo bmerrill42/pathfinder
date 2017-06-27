@@ -12,7 +12,8 @@ void add_connection_array(t_room *room, int neighbor)
 	int i;
 
 	i = 0;
-	if ((tmp = (int*)malloc(((*room).c_count + 1) * sizeof(int))) == NULL)
+	tmp = (int*)malloc(((*room).c_count + 1) * sizeof(int));
+	if (tmp == NULL)
 		throw_error(GENERIC);
 	while (i < (*room).c_count)
 	{
@@ -30,6 +31,14 @@ void add_connection(t_lemin *everything, int room, int neighbor)
 //	if (!everything->rooms[room].connections)
 //		new_connection_array(&everything->rooms[room], neighbor);
 //	else
-		add_connection_array(&everything->rooms[room], neighbor);
+	int i = 0;
+	while (i < (*everything).rooms[room].c_count)
+	{
+		if ((*everything).rooms[room].connections)
+			if ((*everything).rooms[room].connections[i] == neighbor)
+				return ;
+		i++;
+	}
+	add_connection_array(&everything->rooms[room], neighbor);
 	everything->rooms[room].c_count++;
 }

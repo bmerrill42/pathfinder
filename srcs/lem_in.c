@@ -6,6 +6,7 @@ void burn_them_all(t_lemin *lemin)
 
 	i = 0;
 	while (i < (*lemin).r_ct)
+
 	{
 		free((*lemin).rooms[i].name);
 		free((*lemin).rooms[i].connections);
